@@ -1,15 +1,18 @@
 package ryudongjae.hellospring.repository;
 
-
 import org.springframework.stereotype.Repository;
 import ryudongjae.hellospring.domain.Member;
-
 import java.util.*;
+
 
 @Repository
 public class MemoryMemberRepository implements MemberRepository {
-    private static Map<Long,Member>store = new HashMap<>();
+    private static Map<Long,Member> store = new HashMap<>();
     private  static long sequence = 0L;
+
+
+
+
     @Override
     public Member save(Member member) {
         member.setId(++sequence);
@@ -19,6 +22,7 @@ public class MemoryMemberRepository implements MemberRepository {
 
     @Override
     public Optional<Member> findById(Long id) {
+
         return Optional.ofNullable(store.get(id));
     }
 
@@ -31,6 +35,7 @@ public class MemoryMemberRepository implements MemberRepository {
 
     @Override
     public List<Member> findAll() {
+
         return new ArrayList<>(store.values());
     }
     //테스트 이후 데이터 초기화
