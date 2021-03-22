@@ -2,7 +2,7 @@ package ryudongjae.hellospring;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import ryudongjae.hellospring.repository.JdbcMemberRepository;
+import ryudongjae.hellospring.repository.JdbcTemplateMemberRepository;
 import ryudongjae.hellospring.repository.MemberRepository;
 import ryudongjae.hellospring.service.MemberService;
 
@@ -28,6 +28,7 @@ public class SpringConfig {
     public MemberRepository memberRepository(){
 
         //return new MemoryMemberRepository();
-        return new JdbcMemberRepository(dataSource);
+        //return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
